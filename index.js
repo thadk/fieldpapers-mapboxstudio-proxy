@@ -21,11 +21,11 @@ app.use('/', httpProxy({
     toProxy:  true,
     autoRewrite:  true,
     router: function (req) {
-        if (req.path.indexOf('/v3/stamen.i808gmk0/') >-1 ) {
-          var myRegexp = /(stamen.i808gmk0\/)(\w+)\/(\w+)\/(\w+)/gi;
+        if (req.path.indexOf('/v10/') >-1 ) {
+          var myRegexp = /v10\/(\w+).(\w+)\/(\w+)\/(\w+)\/(\w+)(.png|.jpg)?\?access_token=(.*)/gi;
           var match = myRegexp.exec(req.path);
           console.log(match)
-        return `${API_SERVER}/styles/v1/thadk/cj4fts6o83n4a2rnpnqi6uuk6/tiles/256/${match[2]}/${match[3]}/${match[4]}?access_token=pk.eyJ1IjoidGhhZGsiLCJhIjoidWlIX1J4OCJ9.BZnfrT_Jdc8aSQyWV8fL7g`
+        return `${API_SERVER}/styles/v1/${match[1]}/${match[2]}/tiles/256/${match[3]}/${match[4]}/${match[5]}?access_token=${match[7]}`
       }
     },
 
