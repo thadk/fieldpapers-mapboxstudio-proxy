@@ -24,7 +24,7 @@ app.use('/', httpProxy({
         if (req.path.indexOf('/v10/') >-1 ) {
           var myRegexp = /v10\/(\w+).(\w+)\/(\w+)\/(\w+)\/(\w+)(.png|.jpg)?\?access_token=(.*)/gi;
           var match = myRegexp.exec(req.path);
-          console.log(match)
+          console.log(req.path,match)
         return `${API_SERVER}/styles/v1/${match[1]}/${match[2]}/tiles/256/${match[3]}/${match[4]}/${match[5]}?access_token=${match[7]}`
       }
     },
