@@ -3,11 +3,16 @@ const fs          = require('fs'),
       app         = express(),
       httpProxy = require('http-proxy-middleware');
 
-// NOTE: not my real subdomain
 const API_SERVER = 'https://a.api.mapbox.com';
 
-//   /styles/v1/thadk/cj4fts6o83n4a2rnpnqi6uuk6/tiles/256/17/61618/63242@2x?access_token=pk.eyJ1IjoidGhhZGsiLCJhIjoidWlIX1J4OCJ9.BZnfrT_Jdc8aSQyWV8fL7g
-// b.tiles.mapbox.com/v3/stamen.i808gmk6/17/61617/63244.png
+/* accept provider urls like:
+https://fieldpapers-mapboxstudio-proxy.herokuapp.com/v10/mapbox.outdoors-v10/{Z}/{X}/{Y}.png?access_token=pk.eyJ1IjoidGhhZGsiLCJhIjoidWlIX1J4OCJ9.BZnfrT_Jdc8aSQyWV8fL7g
+which refers to:
+mapbox://styles/mapbox/outdoors-v10
+and
+https://api.mapbox.com/styles/v1/mapbox/outdoors-v10/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoidGhhZGsiLCJhIjoidWlIX1J4OCJ9.BZnfrT_Jdc8aSQyWV8fL7g
+*/
+
 app.disable('x-powered-by');
 
 // apply reverse proxy to heroku API
@@ -31,18 +36,6 @@ app.use('/', httpProxy({
 
 
 }));
-
-/*app.all('*', function(req, res, next) {
-    /*res.set({
-        'www-version': `${packageJson.version}`,
-        'X-Frame-Options': 'DENY',
-        'Cache-control': 'no-store',
-        'Pragma': 'no-cache',
-        'Strict-Transport-Security': 'max-age=' + (365 * 24 * 60 * 60) // 365 days, in seconds
-    });
-    next();
-});*/
-
 
 // Define the port.
 const port = process.env.PORT || 4000;
