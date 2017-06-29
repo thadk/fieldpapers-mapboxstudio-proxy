@@ -22,7 +22,7 @@ app.use('/', httpProxy({
     autoRewrite:  true,
     router: function (req) {
         if (req.path.indexOf('/v10/') >-1 ) {
-          var myRegexp = /v10\/([a-zA-Z0-9\-\_]+)\.([a-zA-Z0-9\-\_]+)\/(\w+)\/(\w+)\/(\w+)(\.png|\.jpg)?/gi;
+          var myRegexp = /v10\/([a-zA-Z0-9\-\_]+)[\.\/]([a-zA-Z0-9\-\_]+)\/(\w+)\/(\w+)\/(\w+)(\.png|\.jpg)?/gi;
           var match = myRegexp.exec(req.path);
           console.log(req.path,req.query["access_token"],match)
         return `${API_SERVER}/styles/v1/${match[1]}/${match[2]}/tiles/256/${match[3]}/${match[4]}/${match[5]}?access_token=${req.query["access_token"]}`
