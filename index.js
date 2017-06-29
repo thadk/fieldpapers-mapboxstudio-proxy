@@ -28,7 +28,7 @@ app.use('/', httpProxy({
         return `${API_SERVER}/styles/v1/thadk/cj4fts6o83n4a2rnpnqi6uuk6/tiles/256/${match[2]}/${match[3]}/${match[4]}?access_token=pk.eyJ1IjoidGhhZGsiLCJhIjoidWlIX1J4OCJ9.BZnfrT_Jdc8aSQyWV8fL7g`
       }
     },
-    pathRewrite: {'^v3/stamen.i808gmk6/17/61617/63244.png' : '/new/api'}
+    pathRewrite: {'^v3/stamen.i808gmk5/17/61617/63244.png' : '/new/api'}
 
 
 }));
