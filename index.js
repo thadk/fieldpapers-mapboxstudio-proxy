@@ -16,7 +16,7 @@ https://api.mapbox.com/styles/v1/mapbox/outdoors-v10/tiles/256/{z}/{x}/{y}@2x?ac
 app.disable('x-powered-by');
 
 // apply reverse proxy to heroku API
-app.use('/', httpProxy({
+app.use('/v10', httpProxy({
     logLevel     : 'debug',
     target       : API_SERVER,
     changeOrigin : true,
@@ -36,6 +36,14 @@ app.use('/', httpProxy({
 
 
 }));
+var path = require('path');
+var public = __dirname + "/public/";
+
+app.get('/', function(req, res) {
+      res.sendFile(path.join(public + "index.html"));
+});
+
+app.use('/', express.static(public));
 
 // Define the port.
 const port = process.env.PORT || 4000;
