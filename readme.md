@@ -6,6 +6,10 @@ Issue: [Field Papers](http://fieldpapers.org) in June 2017 will not accept Mapbo
 Instructions
 ============
 
+For guidance visit: https://fieldpapers-mapboxstudio-proxy.herokuapp.com/
+![image](https://user-images.githubusercontent.com/283343/30034776-98ee776a-9171-11e7-91d8-7be853716838.png)
+
+
 Convert your Mapbox Studio address:
 
 If your style address is:
